@@ -5,7 +5,9 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Product } from './entities/product.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('products')
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
@@ -25,12 +27,6 @@ export class ProductsController {
   @Get()
   async findAll() {
     return this.productsService.findAll();
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('product-seller/:id')
-  async getProductsBySellerId(@Param('sellerId') sellerId: number) {
-    return this.productsService.findBySeller(sellerId);
   }
 
   @UseGuards(JwtAuthGuard)

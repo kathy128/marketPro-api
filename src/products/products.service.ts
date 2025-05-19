@@ -26,12 +26,12 @@ export class ProductsService {
 }   );
   }
    async uploadImageToCloudinary(file: Express.Multer.File) {
-     const filePath = file.path.replace(/\\/g, '/');
-    if (!fs.existsSync(filePath)) {
+     //const filePath = file.path.replace(/\\/g, '/');
+    /* if (!fs.existsSync(file.path)) {
     throw new Error('El archivo no se encuentra en la ruta especificada');
-  }
+  } */
     try {
-      const result = await cloudinary.uploader.upload(filePath, {
+      const result = await cloudinary.uploader.upload(file.path, {
         folder: 'productos',
       });
       return result; 
@@ -56,12 +56,7 @@ export class ProductsService {
   async findOne(id: number) {
     return await this.productRepository.findOneBy({id});
   }
- 
- async findBySeller(sellerId: number): Promise<Product[]> {
-    return this.productRepository.find({
-      where: { sellerId }, 
-    });
-  }
+
 
   async findProductsBySellerId(sellerId: number): Promise<Product[]> {
     const products = await this.productRepository.find({
