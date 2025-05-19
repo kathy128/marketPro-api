@@ -11,27 +11,22 @@ import { User, UserRole } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class ProductsService {
-   
+   cloudinaryConfig: any
    constructor(
     @InjectRepository(Product)
     private productRepository: Repository<Product>,
-    //@InjectRepository(User)
-    //private readonly userRepository: Repository<User>,
     private configService: ConfigService
   ) {
     cloudinary.config({
         cloud_name: this.configService.get('CLOUDINARY_CLOUD_NAME'),
         api_key: this.configService.get('CLOUDINARY_API_KEY'),
-      api_secret: this.configService.get('CLOUDINARY_API_SECRET'),
-}   );
+       api_secret: this.configService.get('CLOUDINARY_API_SECRET'),
+});
   }
-   async uploadImageToCloudinary(file: Express.Multer.File) {
-     //const filePath = file.path.replace(/\\/g, '/');
-    /* if (!fs.existsSync(file.path)) {
-    throw new Error('El archivo no se encuentra en la ruta especificada');
-  } */
+   
+   async uploadImageToCloudinary(file: string) {
     try {
-      const result = await cloudinary.uploader.upload(file.path, {
+      const result = await cloudinary.uploader.upload(file, {
         folder: 'productos',
       });
       return result; 
