@@ -21,7 +21,7 @@ export class Product {
    @Column({ nullable: true })
   image: string;
 
-  @Column({ type: 'boolean', default: false })
+  @Column({ type: 'boolean', default: 0 })
   featured: boolean;
 
   @Column({ type: 'int' })

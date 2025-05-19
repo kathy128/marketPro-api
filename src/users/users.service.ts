@@ -2,8 +2,8 @@ import { ConflictException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
-import { User } from './entities/user.entity';
+import * as bcrypt from 'bcryptjs';
+import { User, UserRole } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -12,7 +12,7 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const { email, password, confirmPassword, role, fullname } = createUserDto;
+    const { email, password, confirmPassword, role, name } = createUserDto;
     if (password !== confirmPassword) {
       throw new ConflictException('Las contraseñas no coinciden');
     }
@@ -25,24 +25,23 @@ export class UsersService {
       email,
       password: hash,
       role,
-      fullname,
+      name,
     });
     return this.usersRepository.save(user);
   }
-
-  findAll() {
-    return `This action returns all users`;
+  
+  async findOneByEmail(email: string): Promise<User|null> {
+    return this.usersRepository.findOne({ where: { email } });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number): Promise<User|null> {
+    return this.usersRepository.findOne({ where: { id } });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async findAllSellers(): Promise<User[]> {
+    return this.usersRepository.find({
+      where: { role: UserRole.SELLER },
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
 }

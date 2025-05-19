@@ -12,7 +12,7 @@ export class CreateProductDto {
     @IsString()
     name: string;
 
-     @ApiProperty({ example: 'Product price' })
+    @ApiProperty({ example: 'Product price' })
     @IsNumber()
     @Transform(({ value }) => Number(value))
     price: number;

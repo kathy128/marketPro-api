@@ -1,4 +1,4 @@
-import { Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 export enum UserRole {
   SELLER = 'seller',
@@ -6,6 +6,7 @@ export enum UserRole {
   ADMIN = 'admin',
 }
 
+@Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -14,7 +15,7 @@ export class User {
   email: string;
 
   @Column({ nullable: true })
-  fullname: string;
+  name: string;
 
   @Column()
   password: string;

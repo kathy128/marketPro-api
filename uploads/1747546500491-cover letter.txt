@@ -1,0 +1,22 @@
+Katherine Hidalgo Corredor
+Cra 77a # 85 - 75
+Barranquilla, Atlántico, Colombia
+kathyhidalgo80@gmail.com
+3205877378
+September 29, 2024
+
+
+Dear Cartrack,
+
+I am writing to express my interest in the Junior Frontend Developer position at Cartrack, which I recently saw advertised. With two years of experience in frontend web development and a keen eye for detail, I am excited about the opportunity to contribute to the Cartrack team.
+
+Throughout my professional experience, I have developed a strong foundation in technologies such as TypeScript, HTML, and CSS (SASS). I have worked on projects that required the use of frameworks like Angular, where I participated in the creation of modern and efficient web applications. Additionally, I have experience in developing Progressive Web Applications (PWA), versión control with git and gitLab for continuous integration, SCRUM as development methodology and have conducted both end-to-end with Cypress and unit testing with Jasmine and Karma to ensure software quality.
+
+What motivates me most about Cartrack is your focus on innovation and quality, values that I deeply share. I believe my ability to work well in a team, combined with my willingness to learn and adapt to new technologies, makes me an ideal candidate for your team.
+
+I have attached my resume for your consideration. I appreciate the opportunity to apply and would be delighted to discuss in more detail how I can contribute to the success of Cartrack.
+
+I look forward to your response and am available for an interview at your earliest convenience.
+
+Sincerely,
+Katherine Hidalgo Corredor.
