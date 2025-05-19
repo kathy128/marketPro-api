@@ -3,11 +3,10 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { In, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { v2 as cloudinary } from 'cloudinary';
 import { ConfigService } from '@nestjs/config';
 import * as fs from 'fs';
-import { User, UserRole } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class ProductsService {
@@ -24,9 +23,14 @@ export class ProductsService {
 });
   }
    
-   async uploadImageToCloudinary(file: string) {
+   async uploadImageToCloudinary(file: Express.Multer.File) {
+    console.log('file:', file)
+     const filePath = file.path.replace(/\\/g, '/');
+     if (!fs.existsSync(file.path)) {
+    throw new Error('El archivo no se encuentra en la ruta especificada');
+  } 
     try {
-      const result = await cloudinary.uploader.upload(file, {
+      const result = await cloudinary.uploader.upload(filePath, {
         folder: 'productos',
       });
       return result; 
@@ -34,13 +38,14 @@ export class ProductsService {
       throw new Error('Error al subir la imagen a Cloudinary');
     }
   }
+  
 
   async create(createProductDto: CreateProductDto) {
     let imageUrl: any; 
     if(createProductDto.image){
       imageUrl = await this.uploadImageToCloudinary(createProductDto.image);
     }
-    const product = this.productRepository.create({...createProductDto, image: imageUrl.url});
+    const product = this.productRepository.create({...createProductDto, image: imageUrl?.url});
     return await this.productRepository.save(product);
   }
 

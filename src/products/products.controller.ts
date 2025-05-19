@@ -17,8 +17,6 @@ export class ProductsController {
   @UseInterceptors(FileInterceptor('image'))
   async create(@Body() createProductDto: CreateProductDto,  @UploadedFile() file: Express.Multer.File, ) {
     if (file) {
-      createProductDto.image = null;
-    } else {
       createProductDto.image = file;
     }
     return this.productsService.create(createProductDto);
