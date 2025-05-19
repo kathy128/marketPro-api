@@ -25,10 +25,6 @@ export class CreateProductDto {
     
     @ApiProperty({ example: 'Product image' })
     @IsOptional()
-    @IsFile({
-    fileTypes: ['image/jpeg', 'image/png'],
-    maxSize: 5 * 1024 * 1024,
-    })
     image?: any;
 
     @ApiProperty({ example: 'Product featured' })
