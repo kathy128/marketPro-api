@@ -1,98 +1,253 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# API-Marketplace
+API-Marketplace is a backend service built with **NestJS** designed for a marketplace platform. This API allows sellers to manage their products, buyers to interact with products, and administrators to manage users. The API supports user registration, login, product management, and seller-related operations.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Table of Contents
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
-
-```bash
-$ npm install
-```
-
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
+- [Installation](#installation)
+- [API Endpoints](#api-endpoints)
+  - [Auth](#auth)
+  - [Users](#users)
+  - [Products](#products)
+- [Running the App Locally](#running-the-app-locally)
+- [Details](#details)
 
 ## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+The deployment was made on render 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+https://marketpro-api.onrender.com
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## Installation
+To get started with API-Marketplace, follow these steps:
 
-## Resources
+Clone the repository:
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+git clone https://github.com/marketPro-api.git
+cd API-MARKETPLACE
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Install dependencies:
+```bash
+npm install
+```
+Setup Environment Variables:
 
-## Support
+Make sure to create a .env file in the root of your project and configure it with the necessary environment variables, such as:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```plaintext
+DB_HOST=your-database-host
+DB_PORT=5432
+DB_USERNAME=your-database-username
+DB_PASSWORD=your-database-password
+DB_NAME=your-database-name
+JWT_SECRET=your-jwt-secret-key
+CLOUDINARY_CLOUD_NAME=cloudinary-cloud-name
+CLOUDINARY_API_KEY=cloudinary-api-key
+CLOUDINARY_API_SECRET=cloudinary-api-secret
+```
 
-## Stay in touch
+Run the application:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+npm run start
+```
 
-## License
+## API Endpoints
+To access to a more detailed description of all of the endpoints, enter to this URL:
+```bash
+{url}/api-docs/
+```
+### Auth
+```POST /api/v1/auth/login```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Body:
+
+```json
+{
+    "email": "string",
+    "password": "string"
+}
+```
+Description: Logs in an existing user and returns an accessToken along with the user's role, name, and id.
+
+Response Example:
+
+```json
+{
+    "accessToken": "ashdsakgkjsgaskgodkajihutqhwethqwe",
+    "user": {
+        "id": 1,
+        "name": "John Doe",
+        "role": "seller"
+    }
+}
+```
+
+### Users
+```POST /api/v1/users/register```
+
+Body:
+
+```json
+{
+    "email": "string",
+    "name": "string",
+    "password": "string",
+    "confirmPassword": "string",
+    "role": "admin" | "seller" | "buyer"
+}
+```
+
+Description: Registers a new user with role-based access. Passwords must have at least 8 characters, one uppercase letter, one lowercase letter, and one number.
+
+Response Example:
+
+```json
+{
+    "id": 1,
+    "email": "john.doe@example.com",
+    "name": "John Doe",
+    "role": "seller"
+}
+```
+
+```GET /api/v1/users/sellers```
+
+Description: Retrieves a list of all users with the role of "seller".
+
+Response Example:
+
+```json
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "role": "seller"
+    }
+]
+```
+
+### Products
+```POST /api/v1/products```
+
+Body:
+
+```json
+{
+    "sku": "string",
+    "name": "string",
+    "price": "number",
+    "rating": "number",
+    "image": "File",
+    "featured": "boolean",
+    "stock": "number",
+    "sellerId": "number"
+}
+```
+Description: Creates a new product associated with a seller. The `sellerId` should correspond to a seller's ID in the system.
+
+Response Example:
+
+```json
+{
+    "id": 1,
+    "sku": "SKU123",
+    "name": "Product Name",
+    "price": 199.99,
+    "rating": 4.5,
+    "image": "image_url",
+    "featured": true,
+    "stock": 100,
+    "sellerId": 1
+}
+```
+```GET /api/v1/products```
+
+Description: Fetches all products in the system.
+
+Response Example:
+```json
+[
+    {
+        "id": 1,
+        "sku": "SKU123",
+        "name": "Product Name",
+        "price": 199.99,
+        "rating": 4.5,
+        "image": "image_url",
+        "featured": true,
+        "stock": 100,
+        "sellerId": 1
+    }
+]
+```
+
+``` GET /api/v1/products/{id}```
+
+Description: Retrieves detailed information for a specific product by ID.
+
+Response Example:
+
+```json
+{
+    "id": 1,
+    "sku": "SKU123",
+    "name": "Product Name",
+    "price": 199.99,
+    "rating": 4.5,
+    "image": "image_url",
+    "featured": true,
+    "stock": 100,
+    "sellerId": 1
+}
+```
+```PATCH /api/v1/products/{id}```
+
+Body:
+
+```json
+{
+    "sku": "string",
+    "name": "string",
+    "price": "number",
+    "rating": "number",
+    "image": "File",
+    "featured": "boolean",
+    "stock": "number",
+    "sellerId": "number"
+}
+```
+
+Description: Updates the product's details by product ID. Any field is optional.
+
+```DELETE /api/v1/products/{id}```
+
+Description: Removes a product from the system by ID.
+
+```GET /api/v1/products/seller/{id}```
+
+Description: Retrieves all products from a specific seller by sellerId.
+
+## Running the App Locally
+
+Make sure you have Docker installed (for running the database locally).
+
+Setup a database container:
+
+```bash
+docker-compose up -d
+```
+
+Start the server:
+
+```bash
+npm run start:dev
+```
+Now you should have the application running locally on http://localhost:3000.
+
+## Details
+
+- To upload images to the system I used https://cloudinary.com/.
+- JWT to generate access tokens when users log in the system.
