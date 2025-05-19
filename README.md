@@ -1,4 +1,4 @@
-# API-Marketplace
+# API-MarketPro
 API-Marketplace is a backend service built with **NestJS** designed for a marketplace platform. This API allows sellers to manage their products, buyers to interact with products, and administrators to manage users. The API supports user registration, login, product management, and seller-related operations.
 
 ## Table of Contents
@@ -24,7 +24,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/marketPro-api.git
-cd API-MARKETPLACE
+cd marketPro-api
 ```
 
 Install dependencies:
